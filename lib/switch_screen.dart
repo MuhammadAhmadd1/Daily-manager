@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:daily_manager/start_screen.dart';
-import 'package:daily_manager/task_screen.dart';
+import 'package:daily_manager/start_screen.dart' as start;
+import 'package:daily_manager/task_screen.dart' ;
 
 class SwitchScreen extends StatefulWidget {
   const SwitchScreen({super.key});
@@ -33,7 +33,7 @@ class _SwitchScreenState extends State<SwitchScreen> {
             ),
           ),
           child: activeScreen == 'start-screen'
-              ? StartScreen(changeScreen)
+              ? start.StartScreen(changeScreen)
               : const TaskScreen(),
         ),
       ),
