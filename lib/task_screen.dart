@@ -3,7 +3,6 @@ import 'package:logger/logger.dart';
 import 'package:daily_manager/task.dart';
 import 'package:daily_manager/saved_screen.dart';
 
-
 final Logger logger = Logger();
 
 class TaskScreen extends StatefulWidget {
@@ -26,7 +25,7 @@ class _TaskScreenState extends State<TaskScreen> {
           colors: [Color.fromARGB(255, 0, 0, 0), Colors.blueGrey],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-        ),                
+        ),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -65,7 +64,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: () {
                   String title = _titleController.text;
                   String description = _descriptionController.text;
@@ -79,14 +78,24 @@ class _TaskScreenState extends State<TaskScreen> {
                   _titleController.clear();
                   _descriptionController.clear();
 
-                 Navigator.push(context, 
-                 MaterialPageRoute(builder: (context) => const SavedTasks()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SavedTasks(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   backgroundColor: Colors.blueGrey,
                   foregroundColor: Colors.white,
                 ),
-                child: const Text('Save Task'),
+                label: const Text(
+                  'Save Task',
+                  style: TextStyle(fontSize: 20),
+                ),
+                icon: const Icon(Icons.download),
               ),
             ],
           ),
