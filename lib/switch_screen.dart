@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:daily_manager/start_screen.dart' as start;
-import 'package:daily_manager/task_screen.dart' ;
+import 'package:daily_manager/task_screen.dart';
 
 class SwitchScreen extends StatefulWidget {
   const SwitchScreen({super.key});

@@ -29,7 +29,7 @@ class StartScreen extends StatelessWidget {
               foregroundColor: const Color.fromARGB(255, 255, 255, 255),
             ),
             child: Text('Add Task',
-                style: GoogleFonts.lato(fontSize: 20),
+                style: GoogleFonts.lato(fontSize: 30),
                 textAlign: TextAlign.center),
           ),
         ],
