@@ -4,9 +4,11 @@ import 'package:daily_manager/task.dart';
 import 'package:daily_manager/saved_screen.dart';
 
 final Logger logger = Logger();
+List<Task> validTasks = [];
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
+
   @override
   State<TaskScreen> createState() {
     return _TaskScreenState();
@@ -31,7 +33,7 @@ class _TaskScreenState extends State<TaskScreen> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: const Text('Add Title'),
-          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+          backgroundColor: Colors.blueGrey,
           foregroundColor: Colors.white,
         ),
         body: Padding(
@@ -48,12 +50,13 @@ class _TaskScreenState extends State<TaskScreen> {
                 ),
               ),
               const SizedBox(height: 16),
-              AppBar(
+                  AppBar(automaticallyImplyLeading: false,
                 title: const Text('Add Description'),
                 backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                 foregroundColor: Colors.white,
                 elevation: 0,
-              ),
+              ),  
+              const SizedBox(height: 8),
               TextField(
                 controller: _descriptionController,
                 maxLines: null,
@@ -66,9 +69,19 @@ class _TaskScreenState extends State<TaskScreen> {
               const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () {
-                  String title = _titleController.text;
-                  String description = _descriptionController.text;
-                  savedTasks.add(
+                  String title = _titleController.text.trim();
+                  String description = _descriptionController.text.trim();
+
+                  if (title.isEmpty || description.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content:
+                            Text('Please enter both title and description!'),
+                      ),
+                    );
+                    return;
+                  }
+                  validTasks.add(
                     Task(title: title, description: description),
                   );
 
@@ -81,7 +94,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SavedTasks(),
+                      builder: (context) => const SavedTasks( ),
                     ),
                   );
                 },
@@ -94,6 +107,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 label: const Text(
                   'Save Task',
                   style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center ,
                 ),
                 icon: const Icon(Icons.download),
               ),
