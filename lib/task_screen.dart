@@ -18,7 +18,6 @@ class TaskScreen extends StatefulWidget {
 class _TaskScreenState extends State<TaskScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,39 +31,66 @@ class _TaskScreenState extends State<TaskScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text('Add Title'),
-          backgroundColor: Colors.blueGrey,
+          title: const Text(''),
+          backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
+          elevation: 0,
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextField(
-                controller: _titleController,
-                decoration: const InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 16),
-                  AppBar(automaticallyImplyLeading: false,
-                title: const Text('Add Description'),
+              AppBar( 
+                automaticallyImplyLeading: false,
+                title: const Text('Title'),
                 backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                 foregroundColor: Colors.white,
                 elevation: 0,
-              ),  
+              ),
+              TextField(
+                controller: _titleController,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.transparent,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(17),
+                  ),
+                  hintText: 'Tap to add title',
+                  hintStyle: const TextStyle(
+                    color: Colors.blueGrey,
+                  ),
+                ),
+                cursorColor: Colors.white,
+              ),
+              const SizedBox(height: 16),
+              AppBar(
+                automaticallyImplyLeading: false,
+                title: const Text('Description'),
+                backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+                foregroundColor: Colors.white,
+                elevation: 0,
+              ),
               const SizedBox(height: 8),
               TextField(
                 controller: _descriptionController,
+                style: const TextStyle(color: Colors.white),
                 maxLines: null,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  fillColor: Colors.transparent,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(17),
+                  ),
+                  hintText: 'Tap to add Description',
+                  hintStyle: const TextStyle(
+                    color: Colors.blueGrey,
+                  ),
                 ),
+                cursorColor: Colors.white,
               ),
               const SizedBox(height: 20),
               ElevatedButton.icon(
@@ -94,7 +120,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SavedTasks( ),
+                      builder: (context) => const SavedTasks(),
                     ),
                   );
                 },
@@ -107,7 +133,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 label: const Text(
                   'Save Task',
                   style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center ,
+                  textAlign: TextAlign.center,
                 ),
                 icon: const Icon(Icons.download),
               ),

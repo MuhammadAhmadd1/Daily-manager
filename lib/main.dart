@@ -37,12 +37,12 @@ class StartScreen extends StatelessWidget {
             Colors.blueGrey,
           ],
           begin: Alignment.topLeft,
-          end: Alignment.bottomRight                      ,
+          end: Alignment.bottomRight,
         ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center ,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             'assets/images/task_manager.png',
@@ -76,7 +76,7 @@ class StartScreen extends StatelessWidget {
           const SizedBox(height: 40),
           ElevatedButton(
             onPressed: () {
-              Navigator.push  (
+              Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SavedTasks(),
