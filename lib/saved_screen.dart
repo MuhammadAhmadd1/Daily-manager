@@ -14,6 +14,8 @@ class SavedTasks extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -28,7 +30,7 @@ class SavedTasks extends StatelessWidget {
             ? const Center(
                 child: Text(
                   'No tasks available!',
-                  style: TextStyle(color: Colors.white,fontSize: 20),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               )
             : ListView.builder(
@@ -38,11 +40,17 @@ class SavedTasks extends StatelessWidget {
                   return ListTile(
                     title: Text(
                       '${index + 1}. ${task.title}',
-                      style: GoogleFonts.lato(fontSize: 30),
+                      style: GoogleFonts.lato(
+                        fontSize: 30,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
                     ),
                     subtitle: Text(
                       task.description,
-                      style: GoogleFonts.lato(fontSize: 20),
+                      style: GoogleFonts.lato(
+                        fontSize: 20,
+                        textStyle: const TextStyle(color: Colors.white),
+                      ),
                     ),
                   );
                 },

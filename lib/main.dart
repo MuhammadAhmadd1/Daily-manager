@@ -35,7 +35,7 @@ class StartScreen extends StatelessWidget {
           colors: [
             Color.fromARGB(255, 0, 0, 0),
             Colors.blueGrey,
-          ],
+          ],          
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
