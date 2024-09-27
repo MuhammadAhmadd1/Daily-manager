@@ -7,8 +7,8 @@ final Logger logger = Logger();
 List<Task> validTasks = [];
 
 class TaskScreen extends StatefulWidget {
-  const TaskScreen({super.key});
-
+  const TaskScreen({super.key,this.task});
+  final Task? task;
   @override
   State<TaskScreen> createState() {
     return _TaskScreenState();
@@ -16,8 +16,8 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController(); //A controller for an editable text field.
+  final TextEditingController _descriptionController = TextEditingController(); //A controller for an editable text field.
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,10 +39,10 @@ class _TaskScreenState extends State<TaskScreen> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start, //to keep save button on left
             children: [
-              AppBar( 
-                automaticallyImplyLeading: false,
+              AppBar(
+                automaticallyImplyLeading: false, //remove navigator from title
                 title: const Text('Title'),
                 backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                 foregroundColor: Colors.white,
@@ -55,8 +55,8 @@ class _TaskScreenState extends State<TaskScreen> {
                   filled: true,
                   fillColor: Colors.transparent,
                   border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(17),
+                    borderSide: BorderSide.none, //remove border
+                    borderRadius: BorderRadius.circular(17), 
                   ),
                   hintText: 'Tap to add title',
                   hintStyle: const TextStyle(
@@ -67,7 +67,7 @@ class _TaskScreenState extends State<TaskScreen> {
               ),
               const SizedBox(height: 16),
               AppBar(
-                automaticallyImplyLeading: false,
+                automaticallyImplyLeading: false, //remove navigator from description
                 title: const Text('Description'),
                 backgroundColor: const Color.fromARGB(0, 255, 255, 255),
                 foregroundColor: Colors.white,
@@ -95,7 +95,7 @@ class _TaskScreenState extends State<TaskScreen> {
               const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () {
-                  String title = _titleController.text.trim();
+                  String title = _titleController.text.trim(); //If the string contains leading or trailing whitespace, a new string with no leading and no trailing whitespace is returned
                   String description = _descriptionController.text.trim();
 
                   if (title.isEmpty || description.isEmpty) {
@@ -107,6 +107,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     );
                     return;
                   }
+                
                   validTasks.add(
                     Task(title: title, description: description),
                   );
